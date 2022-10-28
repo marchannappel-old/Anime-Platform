@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  mariadb:
+    image: "${DATABASE_TAG}"
+    restart: "always"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${MYSQL_DATABASE}"
+    networks:
+      - internal
+
+  api:
+    depends_on:
+      - mariadb
+    build: "${API_TAG}"
+    ports:
+      - "${API_PORT}:${API_PORT}"
+    restart: "always"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:mariadb://mariadb:3306/${MYSQL_DATABASE}"
+      - "SPRING_DATASOURCE_USERNAME=${MYSQL_USERNAME}"
+      - "SPRING_DATASOURCE_PASSWORD=${MYSQL_ROOT_PASSWORD}"
+      - "SPRING_JPA_HIBERNATE_DDL-AUTO=create"
+      - "SERVER_PORT=${API_PORT}"
+    networks:
+      - internal
+  ui:
+    depends_on:
+      - api
+    build: "${UI_TAG}"
+    ports:
+      - "${UI_PORT}:${UI_PORT}"
+    restart: "on-failure"
+    networks:
+      - internal
+
+networks:
+  internal:
+    external: false
