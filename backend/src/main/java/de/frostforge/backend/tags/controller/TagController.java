@@ -5,6 +5,7 @@ import de.frostforge.backend.tags.domain.EditTag;
 import de.frostforge.backend.tags.service.TagService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,14 +35,12 @@ public class TagController {
     }
 
     @PostMapping
-    public TagDTO create(@RequestBody CreateTagDTO dto) {
-        // TODO: Implement validation
+    public TagDTO create(@Valid @RequestBody CreateTagDTO dto) {
         return new TagDTO(tagService.create(new CreateTag(dto)));
     }
 
     @PutMapping("/{id}")
-    public TagDTO update(@PathVariable Long id, @RequestBody EditTagDTO dto) {
-        // TODO: Implement validation
+    public TagDTO update(@PathVariable Long id, @Valid @RequestBody EditTagDTO dto) {
         return new TagDTO(tagService.edit(id, new EditTag(dto)));
     }
 
