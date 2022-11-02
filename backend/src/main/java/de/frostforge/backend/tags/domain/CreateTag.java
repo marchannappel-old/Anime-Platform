@@ -4,8 +4,8 @@ import de.frostforge.backend.tags.controller.CreateTagDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@Getter
 @AllArgsConstructor
+@Getter
 public class CreateTag {
     private final String name;
     private final String description;

@@ -41,6 +41,7 @@ public class TagController {
 
     @PostMapping
     public TagDTO create(@Valid @RequestBody CreateTagDTO dto) {
+        var test = tagService.create(new CreateTag(dto));
         return new TagDTO(tagService.create(new CreateTag(dto)));
     }
 
@@ -55,7 +56,7 @@ public class TagController {
     }
 
     /**
-     * Handles validation exceptions in a way that they are more human readable
+     * Handles validation exceptions in a way that they are more human-readable
      * @param ex The exception
      * @return
      */
