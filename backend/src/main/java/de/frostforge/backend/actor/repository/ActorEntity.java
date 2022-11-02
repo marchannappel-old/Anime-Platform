@@ -1,11 +1,13 @@
 package de.frostforge.backend.actor.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Entity
@@ -54,4 +56,7 @@ public class ActorEntity {
 
     @Column
     private String avatar;
+
+    @ManyToMany(mappedBy = "actors")
+    private List<AnimeEntity> animes;
 }

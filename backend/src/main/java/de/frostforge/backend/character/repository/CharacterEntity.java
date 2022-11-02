@@ -1,5 +1,7 @@
 package de.frostforge.backend.character.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
+import de.frostforge.backend.manga.repository.MangaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -43,4 +45,12 @@ public class CharacterEntity {
 
     @Column
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "anime_id")
+    private AnimeEntity anime;
+
+    @ManyToOne
+    @JoinColumn(name = "manga_id")
+    private MangaEntity manga;
 }

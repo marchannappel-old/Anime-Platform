@@ -1,5 +1,7 @@
 package de.frostforge.backend.rating.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
+import de.frostforge.backend.manga.repository.MangaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,8 +18,8 @@ public class RatingEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private User author;
+//    @Column
+//    private User author;
 
     @Column
     private Integer genreRating;
@@ -39,4 +41,12 @@ public class RatingEntity {
 
     @Column
     private String comment;
+
+    @ManyToOne
+    @JoinColumn(name = "anime_id")
+    private AnimeEntity anime;
+
+    @ManyToOne
+    @JoinColumn(name = "manga_id")
+    private MangaEntity manga;
 }

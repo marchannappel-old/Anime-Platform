@@ -1,10 +1,13 @@
 package de.frostforge.backend.tags.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
+import de.frostforge.backend.manga.repository.MangaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -24,4 +27,10 @@ public class TagEntity {
 
     @Column
     private boolean isSpoiler;
+
+    @ManyToMany(mappedBy = "tags")
+    private List<AnimeEntity> animes;
+
+    @ManyToMany(mappedBy = "tags")
+    private List<MangaEntity> mangas;
 }

@@ -1,5 +1,6 @@
 package de.frostforge.backend.chapter.repository;
 
+import de.frostforge.backend.manga.repository.MangaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -30,4 +31,8 @@ public class ChapterEntity {
     @Column
     @Lob
     private byte[] data;
+
+    @ManyToOne
+    @JoinColumn(name = "manga_id")
+    private MangaEntity manga;
 }

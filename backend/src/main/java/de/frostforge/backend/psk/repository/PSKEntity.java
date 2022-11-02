@@ -1,10 +1,13 @@
 package de.frostforge.backend.psk.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
+import de.frostforge.backend.manga.repository.MangaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -24,4 +27,10 @@ public class PSKEntity {
 
     @Column
     private String description;
+
+    @ManyToMany(mappedBy = "psks")
+    private List<AnimeEntity> animes;
+
+    @ManyToMany(mappedBy = "psks")
+    private List<MangaEntity> mangas;
 }

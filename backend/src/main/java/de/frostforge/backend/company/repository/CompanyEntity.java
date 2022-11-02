@@ -1,11 +1,14 @@
 package de.frostforge.backend.company.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
+import de.frostforge.backend.manga.repository.MangaEntity;
 import de.frostforge.backend.status.repository.StatusEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,8 +23,12 @@ public class CompanyEntity {
     @Column
     private String name;
 
-    @Column
-    private StatusEntity status;
+    @ManyToMany
+    @JoinTable(
+            name = "company_status",
+            joinColumns = @JoinColumn(name = "company_id"),
+            inverseJoinColumns = @JoinColumn(name = "status_id"))
+    private List<StatusEntity> status;
 
     @Column
     private String link;
@@ -34,4 +41,10 @@ public class CompanyEntity {
 
     @Column
     private String logo;
+
+    @ManyToMany(mappedBy = "companies")
+    private List<AnimeEntity> animes;
+
+    @ManyToMany(mappedBy = "companies")
+    private List<MangaEntity> mangas;
 }

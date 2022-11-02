@@ -1,5 +1,6 @@
 package de.frostforge.backend.episode.repository;
 
+import de.frostforge.backend.anime.repository.AnimeEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -30,4 +31,8 @@ public class EpisodeEntitiy {
     @Column
     @Lob
     private byte[] data;
+
+    @ManyToOne
+    @JoinColumn(name = "anime_id")
+    private AnimeEntity anime;
 }
