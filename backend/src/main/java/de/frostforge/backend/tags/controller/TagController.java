@@ -42,6 +42,7 @@ public class TagController {
     @PostMapping
     public TagDTO create(@Valid @RequestBody CreateTagDTO dto) {
         var test = tagService.create(new CreateTag(dto));
+        //System.out.println(test.getId());
         return new TagDTO(tagService.create(new CreateTag(dto)));
     }
 

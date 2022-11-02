@@ -18,6 +18,4 @@ public class Tag {
         this.description = entity.getDescription();
         this.isSpoiler = entity.isSpoiler();
     }
-
-    public Tag(CreateTag)
 }
