@@ -1,7 +1,6 @@
-package de.frostforge.backend.episode.repository;
+package de.frostforge.backend.status.repository;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -11,9 +10,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@Data
 @Table
-public class EpisodeEntitiy {
+public class StatusEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,12 +20,5 @@ public class EpisodeEntitiy {
     private String name;
 
     @Column
-    private Integer episodeNumber;
-
-    @Column
-    private String language;
-
-    @Column
-    @Lob
-    private byte[] data;
+    private String description;
 }
