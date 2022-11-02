@@ -42,4 +42,11 @@ public class TagEntity {
         this.description = entity.getDescription();
         this.isSpoiler = entity.isSpoiler();
     }
+
+    public TagEntity(Long id, String name, String description, boolean isSpoiler) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.isSpoiler = isSpoiler;
+    }
 }

@@ -98,7 +98,7 @@ public class TagControllerTest {
 
         @Test
         public void createsNewEntryReturnsTag() {
-
+            // TODO: Implement
         }
     }
 
@@ -106,12 +106,12 @@ public class TagControllerTest {
     class EditTags {
         @Test
         public void callsCorrectService() {
-
+            // TODO: Implement
         }
 
         @Test
         public void updatesAnExistingEntryAndReturnsUpdatedEntry() {
-            
+            // TODO: Implement
         }
     }
 
@@ -124,6 +124,11 @@ public class TagControllerTest {
             new TagController(service).delete(anyLong());
 
             Mockito.verify(service, Mockito.times(1)).deleteById(anyLong());
+        }
+
+        @Test
+        public void shouldDeleteAnEntry() {
+            // TODO: Implement
         }
     }
 }
